@@ -1,4 +1,14 @@
-# React + TypeScript + Vite
+# Leadcraft frontend
+
+## Supabase auth
+
+1. Copy `.env.example` to `.env.local` and fill in the Supabase project URL and publishable key.
+2. In Supabase Dashboard > Authentication > Providers, enable **Email** and **GitHub**.
+3. Configure GitHub OAuth with the callback URL shown in Supabase Dashboard. Add the deployed frontend URL and `http://localhost:5173` to Supabase Authentication URL Configuration.
+
+The app supports email registration/login and GitHub OAuth. New email users receive the selected role and display name in `user_metadata`; email confirmation follows the Supabase project setting.
+
+After successful authentication, users are redirected to `/dashboard`. The dashboard includes progress, current module, and the next challenge.
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
