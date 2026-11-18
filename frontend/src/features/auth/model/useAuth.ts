@@ -23,14 +23,14 @@ export function useAuth() {
       }
       const nextUser = data.session?.user ? mapSupabaseUser(data.session.user) : null
       setUser(nextUser)
-      if (nextUser && window.location.pathname !== '/dashboard') navigate('/dashboard')
+      if (nextUser && !window.location.pathname.startsWith('/dashboard')) navigate('/dashboard')
       setIsReady(true)
     })
 
     const { data: authListener } = supabase.auth.onAuthStateChange((_event, session) => {
       const nextUser = session?.user ? mapSupabaseUser(session.user) : null
       setUser(nextUser)
-      if (nextUser && window.location.pathname !== '/dashboard') navigate('/dashboard')
+      if (nextUser && !window.location.pathname.startsWith('/dashboard')) navigate('/dashboard')
     })
 
     return () => authListener.subscription.unsubscribe()

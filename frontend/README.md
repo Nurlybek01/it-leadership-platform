@@ -2,7 +2,7 @@
 
 ## Supabase auth
 
-1. Copy `.env.example` to `.env.local` and fill in the Supabase project URL and publishable key.
+1. Copy `.env.example` to `.env.local` and fill in the Supabase project URL and publishable key. The frontend accepts both `VITE_SUPABASE_*` and `EXPO_PUBLIC_SUPABASE_*` variable names.
 2. In Supabase Dashboard > Authentication > Providers, enable **Email** and **GitHub**.
 3. Configure GitHub OAuth with the callback URL shown in Supabase Dashboard. Add the deployed frontend URL and `http://localhost:5173` to Supabase Authentication URL Configuration.
 
