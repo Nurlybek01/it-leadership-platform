@@ -223,7 +223,7 @@ export function TeamPage({ user }: { user: User }) {
 
   return (
     <section
-      className="min-h-[28rem] rounded-xl border border-[var(--color-border)] bg-white p-6 shadow-[var(--shadow-card)] sm:p-8"
+      className="min-h-112 rounded-xl border border-(--color-border) bg-white p-6 shadow-(--shadow-card) sm:p-8"
       aria-labelledby="student-team-title"
     >
       <p className="text-label font-bold uppercase text-brand-600">
@@ -247,7 +247,7 @@ export function TeamPage({ user }: { user: User }) {
       ) : (
         <div className="mt-8 grid gap-8 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
           <form
-            className="rounded-xl border border-[var(--color-border)] p-5 sm:p-6"
+            className="rounded-xl border border-(--color-border) p-5 sm:p-6"
             onSubmit={(event) => void createGroup(event)}
           >
             <h2 className="text-heading-md font-bold text-ink-900">
@@ -261,7 +261,7 @@ export function TeamPage({ user }: { user: User }) {
             </label>
             <input
               autoComplete="off"
-              className="mt-2 w-full rounded-lg border border-[var(--color-border)] px-3 py-2.5 text-body-sm text-ink-900 outline-none focus:border-brand-500"
+              className="mt-2 w-full rounded-lg border border-(--color-border) px-3 py-2.5 text-body-sm text-ink-900 outline-none focus:border-brand-500"
               id="student-group-name"
               maxLength={80}
               onChange={(event) => setGroupName(event.target.value)}
@@ -279,7 +279,7 @@ export function TeamPage({ user }: { user: User }) {
             <div className="mt-2 flex gap-2">
               <input
                 autoComplete="email"
-                className="min-w-0 flex-1 rounded-lg border border-[var(--color-border)] px-3 py-2.5 text-body-sm text-ink-900 outline-none focus:border-brand-500"
+                className="min-w-0 flex-1 rounded-lg border border-(--color-border) px-3 py-2.5 text-body-sm text-ink-900 outline-none focus:border-brand-500"
                 id="student-group-member-email"
                 onChange={(event) => setEmail(event.target.value)}
                 placeholder="student@example.com"
@@ -372,7 +372,7 @@ export function TeamPage({ user }: { user: User }) {
               <ul className="mt-4 space-y-3">
                 {groups.map((group) => (
                   <li
-                    className="rounded-xl border border-[var(--color-border)] p-4"
+                    className="rounded-xl border border-(--color-border) p-4"
                     key={group.id}
                   >
                     <h3 className="font-semibold text-ink-900">{group.name}</h3>

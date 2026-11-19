@@ -1,5 +1,7 @@
-import { StudentSectionPlaceholder } from '../../shared/ui/StudentSectionPlaceholder'
+import { StudentSectionPlaceholder } from "../../shared/ui/StudentSectionPlaceholder";
 
 export function ProjectsPage() {
-  return <StudentSectionPlaceholder title="Проекты" path="/dashboard/projects" />
+  return (
+    <StudentSectionPlaceholder title="Проекты" path="/dashboard/projects" />
+  );
 }

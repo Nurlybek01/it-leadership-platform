@@ -7,7 +7,7 @@ export function StudentSectionPlaceholder({
 }) {
   return (
     <section
-      className="min-h-[28rem] rounded-xl border border-[var(--color-border)] bg-white p-6 shadow-[var(--shadow-card)] sm:p-8"
+      className="min-h-112 rounded-xl border border-(--color-border) bg-white p-6 shadow-(--shadow-card) sm:p-8"
       aria-labelledby="student-placeholder-title"
     >
       <p className="text-label font-bold uppercase text-brand-600">
