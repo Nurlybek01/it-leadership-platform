@@ -1,16 +1,19 @@
-import { useEffect } from 'react'
+import { Suspense, lazy, useEffect } from 'react'
 import { useAuth } from '../../../features/auth/model/useAuth'
 import { roleLabels } from '../../../entities/user/model/types'
 import { navigate } from '../../../shared/lib/router'
 import { Icon } from '../../../shared/ui/Icon'
 import { AchievementsPage } from '../../student/achievements/ui/AchievementsPage'
 import { StudentHomePage } from '../../student/home/ui/StudentHomePage'
-import { ModulesPage } from '../../student/modules/ui/ModulesPage'
 import { ProjectsPage } from '../../student/projects/ui/ProjectsPage'
 import { TeamPage } from '../../student/team/ui/TeamPage'
 import { getStudentPage } from '../../student/model/routes'
 import { StudentSidebar } from '../../../widgets/student-dashboard/ui/StudentSidebar'
 import { TeacherDashboard } from '../../../widgets/teacher-dashboard/ui/TeacherDashboard'
+
+const ModulesPage = lazy(() =>
+  import('../../student/modules/ui/ModulesPage').then((module) => ({ default: module.ModulesPage })),
+)
 
 export function DashboardPage({ path }: { path: string }) {
   const auth = useAuth()
@@ -45,9 +48,13 @@ export function DashboardPage({ path }: { path: string }) {
                 <StudentSidebar activePage={studentPage} />
                 <div className="min-w-0">
                   {studentPage === 'home' && <StudentHomePage user={auth.user} />}
-                  {studentPage === 'modules' && <ModulesPage />}
+                  {studentPage === 'modules' && (
+                    <Suspense fallback={<p className="text-body-sm text-ink-500" role="status">Загружаем модули…</p>}>
+                      <ModulesPage path={path} />
+                    </Suspense>
+                  )}
                   {studentPage === 'projects' && <ProjectsPage />}
-                  {studentPage === 'team' && <TeamPage />}
+                  {studentPage === 'team' && <TeamPage user={auth.user} />}
                   {studentPage === 'achievements' && <AchievementsPage />}
                 </div>
               </>}

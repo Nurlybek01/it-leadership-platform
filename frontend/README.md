@@ -10,6 +10,12 @@ The app supports email registration/login and GitHub OAuth. New email users rece
 
 After successful authentication, users are redirected to `/dashboard`. The dashboard includes progress, current module, and the next challenge.
 
+To enable student groups, run [`supabase/migrations/20261119110000_student_groups.sql`](./supabase/migrations/20261119110000_student_groups.sql) once in the Supabase SQL Editor. The migration refreshes the PostgREST schema cache. If the migration was already applied but its functions are still not found, run `NOTIFY pgrst, 'reload schema';` in the SQL Editor. Students can create groups and add existing student accounts by email; each group is limited to five people, including its creator.
+
+## Learning modules
+
+Module content lives in `src/entities/module/data/modules/`, with one JSON file per module. Add a unique `id`, a display `order`, and prerequisite module IDs; the catalog loads these files automatically. Keep the content shape in `src/entities/module/model/types.ts`: Markdown theory, videos and references, quiz questions, GitHub practice checks, and achievement IDs. A module with no prerequisites is available first; dependent modules are displayed locked until progress is connected.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
