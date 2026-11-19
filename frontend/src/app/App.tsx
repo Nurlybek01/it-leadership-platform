@@ -11,5 +11,7 @@ export default function App() {
     return () => window.removeEventListener('popstate', handlePopState)
   }, [])
 
-  return path === '/dashboard' ? <DashboardPage /> : <HomePage />
+  return path === '/dashboard' || path.startsWith('/dashboard/')
+    ? <DashboardPage path={path} />
+    : <HomePage />
 }
